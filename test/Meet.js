@@ -69,5 +69,11 @@ describe("Meet", function () {
         
         expect(advisorsAmount.add(privateFundingAmount).add(seedAmount).add(teamAmount).add(ownerAmount)).to.equal(total);
     });
+    
+    it("advisors" , async function () {
+        await advisors.setMeet(meet.address);
+        expect(await advisors.Meet().then((ret) => {return ret.toLowerCase()})).to.equal(meet.address.toLowerCase());
+    });
+
 
 });
