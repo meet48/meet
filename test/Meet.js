@@ -74,6 +74,14 @@ describe("Meet", function () {
         await advisors.setMeet(meet.address);
         expect(await advisors.Meet().then((ret) => {return ret.toLowerCase()})).to.equal(meet.address.toLowerCase());
     });
+    
+    it("advisors balance" , async function () {
+        const total = await meet.totalSupply().then((ret) => {return ret});
+        expect(await meet.balanceOf(advisors.address).then((ret) => {return ret})).to.equal(total.mul(3).div(100));
+    });
+
+
+
 
 
 });
