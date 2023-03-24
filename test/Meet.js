@@ -66,7 +66,6 @@ describe("Meet", function () {
         const ownerAmount = await meet.balanceOf(owner.address).then((ret) => {
             return ret;
         });
-        
         expect(advisorsAmount.add(privateFundingAmount).add(seedAmount).add(teamAmount).add(ownerAmount)).to.equal(total);
     });
     
@@ -78,6 +77,10 @@ describe("Meet", function () {
     it("advisors balance" , async function () {
         const total = await meet.totalSupply().then((ret) => {return ret});
         expect(await meet.balanceOf(advisors.address).then((ret) => {return ret})).to.equal(total.mul(3).div(100));
+    });
+
+    it("advisors owner" , async function () {
+        expect(await advisors.owner().then((ret) => {return ret.toLowerCase()})).to.equal(owner.address.toLowerCase());
     });
 
 
