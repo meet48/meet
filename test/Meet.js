@@ -83,7 +83,10 @@ describe("Meet", function () {
         expect(await advisors.owner().then((ret) => {return ret.toLowerCase()})).to.equal(owner.address.toLowerCase());
     });
 
-
+    it("privateFunding" , async function () {
+        await privateFunding.setMeet(meet.address);
+        expect(await privateFunding.Meet().then((ret) => {return ret.toLowerCase()})).to.equal(meet.address.toLowerCase());
+    });
 
 
 
